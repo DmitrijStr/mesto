@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./pages/index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Mesto</title>
+</head>
+
+<body class="page">
+
+  <button class='overlay'></button>
+
+    <div class="page__content">
+      <header class="header">
+        <a href='#'><img class="header__logo" src='./images/logo.svg' alt='изображение логотипа'></a>
+      </header>
+      <main class="content">
+        <section class="profile">
+          <div class="profile__avatar">
+          </div>
+          <div class="profile__infos">
+            <div class="profile__info">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button class="profile__button profile__button_action_edit hover-button">
+                <img src="./images/edit.svg" alt='изображение кнопки редактировать'>
+              </button>
+              <h2 class="profile__profession">Исследователь океана</h2>
+            </div>
+          </div>
+          <button class="profile__button profile__button_action_add hover-button">
+            <img src="./images/plus.svg alt=" alt='изображение кнопки добавить'>
+          </button>
+        </section>
+        <section class="pop-up">
+          <button class="pop-up__btn pop-up__btn_action_deny hover-button">
+            <img src="./images/deny.svg" alt='изображение кнопки закрыть'>
+            </button>
+          <div class="pop-up__container">
+            <p class="pop-up__title">Редактировать профиль</p>
+            <div class="pop-up__input">
+              <input type="text" class="pop-up__text pop-up__text_type_name" value="Жак-Ив Кусто">
+              <input type="text" class="pop-up__text pop-up__text_type_profession" value="Исследователь океана">
+              <button class="pop-up__btn pop-up__btn_action_save">
+              Сохранить
+              </button>
+            </div>
+          </div>
+        </section>
+        <section class="photo-grid">
+          <div class="photo-grid__item">
+            <img class="photo-grid__image" src="./images/kirill-pershin-1088404-unsplash.png" alt='изображение Карачаевск'>
+            <div class="photo-grid__description">
+              <h2 class=photo-grid__place>Карачаевск</h2>
+              <button class="photo-grid__button">
+                <img src="./images/like.svg" alt='изображение кнопки нравится'>
+              </button>
+            </div>
+          </div>
+          <div class="photo-grid__item">
+            <img class="photo-grid__image" src="./images/kirill-pershin-1404681-unsplash.png" alt='изображение гора эльбрус'>
+            <div class="photo-grid__description">
+              <h2 class=photo-grid__place>Гора Эльбрус</h2>
+              <button class="photo-grid__button">
+                <img src="./images/like.svg" alt='изображение кнопки нравится'>
+              </button>
+            </div>
+          </div>
+          <div class="photo-grid__item">
+            <img class="photo-grid__image" src="./images/kirill-pershin-1556355-unsplash.png" alt='изображение Домбай'>
+            <div class="photo-grid__description">
+              <h2 class=photo-grid__place>Домбай</h2>
+              <button class="photo-grid__button">
+                <img src="./images/like.svg" alt='изображение кнопки нравится'>
+              </button>
+            </div>
+          </div>
+          <div class="photo-grid__item">
+            <img class="photo-grid__image" src="./images/kirill-pershin-1404681-unsplash (1).png" alt='изображение гора эльбрус'>
+            <div class="photo-grid__description">
+              <h2 class=photo-grid__place>Гора Эльбрус</h2>
+              <button class="photo-grid__button">
+                <img src="./images/like.svg" alt='изображение кнопки нравится'>
+              </button>
+            </div>
+          </div>
+          <div class="photo-grid__item">
+            <img class="photo-grid__image" src="./images/kirill-pershin-1556355-unsplash (1).png" alt='изображение домбай'>
+            <div class="photo-grid__description">
+              <h2 class=photo-grid__place>Домбай</h2>
+              <button class="photo-grid__button">
+                <img src="./images/like.svg" alt='изображение кнопки нравится'>
+              </button>
+            </div>
+          </div>
+          <div class="photo-grid__item">
+            <img class="photo-grid__image" src="./images/kirill-pershin-1088404-unsplash.png" alt='изображение Карачаево-Черкесия'>
+            <div class="photo-grid__description">
+              <h2 class=photo-grid__place>Карачаево-Черкесия</h2>
+              <button class="photo-grid__button">
+                <img src="./images/like.svg" alt='изображение кнопки нравится'>
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <h3 class="footer__copyright">© 2020 Mesto Russia</h3>
+      </footer>
+  </div>
+  <script src="./scripts/script.js"></script>
+</body>
+</html>
