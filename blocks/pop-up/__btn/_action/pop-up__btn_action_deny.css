@@ -1,0 +1,16 @@
+.pop-up__btn_action_deny {
+  height: 40.7px;
+  width: 40.7px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  position: absolute; 
+  top: -47px; 
+  right: -28px;
+}
+
+@media screen and (max-width: 414px){
+  .pop-up__btn_action_deny {
+    right: -15px; 
+  }
+}

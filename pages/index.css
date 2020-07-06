@@ -1,0 +1,13 @@
+@import url(../fonts/Inter-Web/inter.css);
+@import url(../vendor/normalize.css);
+@import url(../blocks/page/page.css);
+@import url(../blocks/page/__content/page__content.css);
+@import url(../blocks/header/header.css);
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/pop-up/pop-up.css);
+@import url(../blocks/pop-up/_type/pop-up_type_opened.css);
+@import url(../blocks/photo-grid/photo-grid.css);
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/overlay/overlay.css);
+@import url(../blocks/overlay/_type/overlay_type_on.css);
+@import url(../blocks/hover-button/hover-button.css);
