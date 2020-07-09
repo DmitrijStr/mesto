@@ -1,4 +1,4 @@
-# Проект 4: Место https://dmitrijstr.github.io/mesto/
+# Проект 4: Место https://dmitrijstr.github.io/mesto/index.html
 
 ### Обзор
 
