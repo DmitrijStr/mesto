@@ -2,6 +2,7 @@
 @import url(../vendor/normalize.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/page/__content/page__content.css);
+@import url(../blocks/content/content.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/pop-up/pop-up.css);
@@ -11,3 +12,4 @@
 @import url(../blocks/overlay/overlay.css);
 @import url(../blocks/overlay/_type/overlay_type_on.css);
 @import url(../blocks/hover-button/hover-button.css);
+

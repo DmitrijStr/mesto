@@ -10,7 +10,7 @@
 
 @media screen and (max-width: 640px){
   .profile__button_action_add {
-    margin-top: 36px;
+    margin-top: 24px;
     width: 282px;
   }
 }

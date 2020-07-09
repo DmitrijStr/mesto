@@ -13,48 +13,32 @@
   <!--Здравствуйте, извините за первую заливку, пытался быстро пофиксить альт у изображений а в итоге из-за спешки сломал всё. В итоге некорректно залил в гитхаб и вы невовремя начали проверку :D кажется теперь страница не прокручивается но если всё же не могли бы вы сказать в каком браузере? Спасибо. Ну и за js прошу сильно не пинать это мой первый код :) -->
     <div class="page__content">
 
-  <button class='overlay'></button>
+  <div class='overlay'></div>
       <header class="header">
         <a href='#'><img class="header__logo" src='./images/logo.svg' alt='изображение логотипа'></a>
       </header>
       <main class="content">
         <section class="profile">
-          <div class="profile__avatar">
-          </div>
           <div class="profile__infos">
-            <div class="profile__info">
-              <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button class="profile__button profile__button_action_edit hover-button">
-                <img src="./images/edit.svg">
-              </button>
-              <h2 class="profile__profession">Исследователь океана</h2>
+            <img class="profile__avatar" src="./images/avatar.jpg" alt="изображение аватара">
+            <div class="profile__description">
+              <div class='profile__info'>
+                <h1 class="profile__name">Жак-Ив Кусто</h1>      
+                <button class="profile__button profile__button_action_edit hover-button" type="button"></button>
+              </div>
+              <p class="profile__profession">Исследователь океана</p>
             </div>
           </div>
-          <button class="profile__button profile__button_action_add hover-button">
+          <button class="profile__button profile__button_action_add hover-button" type="button">
             <img src="./images/plus.svg" alt='изображение кнопки добавить'>
           </button>
-        </section>
-        <section class="pop-up">
-          <button class="pop-up__btn pop-up__btn_action_deny hover-button">
-            <img src="./images/deny.svg" alt='изображение кнопки закрыть'>
-            </button>
-          <div class="pop-up__container">
-            <p class="pop-up__title">Редактировать профиль</p>
-            <div class="pop-up__input">
-              <input type="text" class="pop-up__text pop-up__text_type_name" value="Жак-Ив Кусто">
-              <input type="text" class="pop-up__text pop-up__text_type_profession" value="Исследователь океана">
-              <button class="pop-up__btn pop-up__btn_action_save">
-              Сохранить
-              </button>
-            </div>
-          </div>
         </section>
         <section class="photo-grid">
           <div class="photo-grid__item">
             <img class="photo-grid__image" src="./images/kirill-pershin-karachaevsk.jpg" alt='изображение Карачаевск'>
             <div class="photo-grid__description">
               <h2 class=photo-grid__place>Карачаевск</h2>
-              <button class="photo-grid__button">
+              <button class="photo-grid__button hover-button" type="button">
                 <img src="./images/like.svg" alt='изображение кнопки нравится'>
               </button>
             </div>
@@ -63,7 +47,7 @@
             <img class="photo-grid__image" src="./images/kirill-pershin-elbrus.jpg" alt='изображение гора эльбрус'>
             <div class="photo-grid__description">
               <h2 class=photo-grid__place>Гора Эльбрус</h2>
-              <button class="photo-grid__button">
+              <button class="photo-grid__button hover-button" type="button">
                 <img src="./images/like.svg" alt='изображение кнопки нравится'>
               </button>
             </div>
@@ -72,7 +56,7 @@
             <img class="photo-grid__image" src="./images/kirill-pershin-dombai.jpg" alt='изображение Домбай'>
             <div class="photo-grid__description">
               <h2 class=photo-grid__place>Домбай</h2>
-              <button class="photo-grid__button">
+              <button class="photo-grid__button hover-button" type="button">
                 <img src="./images/like.svg" alt='изображение кнопки нравится'>
               </button>
             </div>
@@ -81,7 +65,7 @@
             <img class="photo-grid__image" src="./images/kirill-pershin-elbrus.jpg" alt='изображение гора эльбрус'>
             <div class="photo-grid__description">
               <h2 class=photo-grid__place>Гора Эльбрус</h2>
-              <button class="photo-grid__button">
+              <button class="photo-grid__button hover-button" type="button">
                 <img src="./images/like.svg" alt='изображение кнопки нравится'>
               </button>
             </div>
@@ -90,7 +74,7 @@
             <img class="photo-grid__image" src="./images/kirill-pershin-dombai.jpg" alt='изображение домбай'>
             <div class="photo-grid__description">
               <h2 class=photo-grid__place>Домбай</h2>
-              <button class="photo-grid__button">
+              <button class="photo-grid__button hover-button" type="button">
                 <img src="./images/like.svg" alt='изображение кнопки нравится'>
               </button>
             </div>
@@ -99,10 +83,25 @@
             <img class="photo-grid__image" src="./images/kirill-pershin-karachaevsk.jpg" alt='изображение Карачаево-Черкесия'>
             <div class="photo-grid__description">
               <h2 class=photo-grid__place>Карачаево-Черкесия</h2>
-              <button class="photo-grid__button">
+              <button class="photo-grid__button hover-button" type="button">
                 <img src="./images/like.svg" alt='изображение кнопки нравится'>
               </button>
             </div>
+          </div>
+        </section>
+        <section class="pop-up">
+          <button class="pop-up__btn pop-up__btn_action_deny hover-button" type="button">
+            <img src="./images/deny.svg" alt='изображение кнопки закрыть'>
+            </button>
+          <div class="pop-up__container">
+            <p class="pop-up__title">Редактировать профиль</p>
+            <form class="pop-up__input" name='form' method="GET">
+              <input type="text" class="pop-up__text pop-up__text_type_name" value="Жак-Ив Кусто" name="name">
+              <input type="text" class="pop-up__text pop-up__text_type_profession" value="Исследователь океана" name="proffession">
+              <button class="pop-up__btn pop-up__btn_action_save" type="button">
+              Сохранить
+              </button>
+            </form>
           </div>
         </section>
       </main>
