@@ -10,10 +10,9 @@
 
 <body class="page">
 
-  <!--Здравствуйте, извините за первую заливку, пытался быстро пофиксить альт у изображений а в итоге из-за спешки сломал всё. В итоге некорректно залил в гитхаб и вы невовремя начали проверку :D кажется теперь страница не прокручивается но если всё же не могли бы вы сказать в каком браузере? Спасибо. Ну и за js прошу сильно не пинать это мой первый код :) -->
   <div class="page__content">
 
-    <div class='overlay'></div>
+    
       <header class="header">
         <a href='#'><img class="header__logo" src='./images/logo.svg' alt='изображение логотипа'></a>
       </header>
@@ -89,25 +88,27 @@
             </div>
           </div>
         </section>
-        <section class="pop-up">
-          <button class="pop-up__btn pop-up__btn_action_deny hover-button" type="button">
-            <img src="./images/deny.svg" alt='изображение кнопки закрыть'>
-            </button>
-          <div class="pop-up__container">
-            <p class="pop-up__title">Редактировать профиль</p>
-            <form class="pop-up__input" name='form' method="GET">
-              <input type="text" class="pop-up__text pop-up__text_type_name" value="Жак-Ив Кусто" name="name">
-              <input type="text" class="pop-up__text pop-up__text_type_profession" value="Исследователь океана" name="proffession">
-              <button class="pop-up__btn pop-up__btn_action_save" type="button">
-              Сохранить
-              </button>
-            </form>
-          </div>
-        </section>
+        
       </main>
       <footer class="footer">
         <h3 class="footer__copyright">© 2020 Mesto Russia</h3>
       </footer>
+      <section class="pop-up">
+
+        <div class="pop-up__container">
+          <button class="pop-up__btn pop-up__btn_action_deny hover-button" type="button">
+            <img src="./images/deny.svg" alt='изображение кнопки закрыть'>
+            </button>
+          <p class="pop-up__title">Редактировать профиль</p>
+          <form class="pop-up__input" name='form' method="GET">
+            <input type="text" class="pop-up__text pop-up__text_type_name" value="Жак-Ив Кусто" name="name">
+            <input type="text" class="pop-up__text pop-up__text_type_profession" value="Исследователь океана" name="proffession">
+            <button class="pop-up__btn pop-up__btn_action_save" type="submit">
+            Сохранить
+            </button>
+          </form>
+        </div>
+      </section>
   </div>
   <script src="./scripts/script.js"></script>
 </body>

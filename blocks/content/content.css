@@ -2,9 +2,10 @@
   margin: auto;
 }
 
-@media screen and (max-width: 320px){
+@media screen and (max-width: 360px){
   .content {  
     padding-left: 19px;
     padding-right: 19px;
   }
 }
+

@@ -1,10 +1,10 @@
 .pop-up__text {
-  width: 358px;
-  height: 27.28px;
+  width: 100%;
+
   font-size: 14px;
   line-height: 17px;
   margin: 0;
-  padding: 0 0 13.28px;
+  padding: 0 0 9.28px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
