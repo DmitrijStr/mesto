@@ -47,11 +47,11 @@ function formSubmitHandler (evt) {
 
     // Находим поля формы в DOM
     // Получите значение полей из свойства value
-    nameInput.getAttribute('value');
-    jobInput.getAttribute('value');
+
+    
     // Выберите элементы, куда должны быть вставлены значения полей
-    nameInput.getAttribute('name');
-    jobInput.getAttribute('name');
+
+    
     // Вставьте новые значения с помощью textContent
     Name.textContent = nameInput.value;
     Profession.textContent = jobInput.value;
