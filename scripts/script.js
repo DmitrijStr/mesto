@@ -24,7 +24,7 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
+// не удалось импортировать массив, видимо не настроено окружение :(
 // модальные окна
 const editModal = document.querySelector('.popup_type_edit');
 const newCardModal = document.querySelector('.popup_type_new-card');
