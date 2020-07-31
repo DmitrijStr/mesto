@@ -24,7 +24,7 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-// не удалось импортировать массив, видимо не настроено окружение :(
+
 // модальные окна
 const editModal = document.querySelector('.popup_type_edit');
 const newCardModal = document.querySelector('.popup_type_new-card');
@@ -39,7 +39,8 @@ const editModalCloseBtn = editModal.querySelector('.pop-up__btn_action_deny');
 const newCardModalCloseBtn = newCardModal.querySelector('.pop-up__btn_action_deny');
 const imageModalCloseBtn = imageModal.querySelector('.pop-up__btn_action_deny');
 
-// инпуты форм
+// формы
+
 const formElement = editModal.querySelector('.pop-up__input');
 const nameInput = formElement.querySelector('.pop-up__text_type_name');
 const jobInput = formElement.querySelector('.pop-up__text_type_profession');
@@ -54,8 +55,8 @@ const imageModalPlace = imageModal.querySelector('.pop-up__image-name');
 // функция открытия модального окна
 function toggleModal(modal) {
   if (!modal.classList.contains('pop-up_type_opened')) {
-    name.textContent = nameInput.value;
-    profession.textContent = jobInput.value;
+    nameInput.value = name.textContent;
+    jobInput.value = profession.textContent;
   }
   modal.classList.toggle('pop-up_type_opened');
 };
@@ -77,6 +78,10 @@ function addCardHandler (evt) {
 
 formElement.addEventListener('submit', formSubmitHandler);
 addCard.addEventListener('submit', addCardHandler);
+
+
+
+
 const profileName = document.querySelector('.profile__name');
 const profileProfession = document.querySelector('.profile__profession');
 const saveButton = document.querySelector('.pop-up__btn_action_save');
@@ -86,6 +91,7 @@ const profession = document.querySelector('.profile__profession');
 // слушатели открытия модальных окон
 editButton.addEventListener('click', () => {
   toggleModal(editModal)
+
 });
 plusButton.addEventListener('click', () => {
   toggleModal(newCardModal)
@@ -146,3 +152,26 @@ function renderCard(data) {
 initialCards.forEach((data) => {
   renderCard(data);
 })
+
+// //6 проектная 
+
+// закрытие по оверлей
+
+const overlay = document.querySelectorAll('.pop-up');
+
+function toggleOverlay(evt) {
+  evt.target.classList.toggle('pop-up_type_opened');
+} 
+
+for (let i = 0; i < overlay.length; i++) {
+  overlay[i].addEventListener('click', toggleOverlay);
+}
+
+
+document.body.addEventListener('keyup', function (evt) {
+  if (evt.key == 'Escape') {
+      document.querySelector('.pop-up_type_opened').classList.remove('pop-up_type_opened');
+      document.querySelector('.pop-up_type_opened').classList.remove('pop-up_type_opened');
+  };
+}, false);
+

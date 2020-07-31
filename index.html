@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project Mesto</title>
 </head>
-  
 <body class="page">
   <div class="page__content">
     <header class="header">
@@ -40,10 +39,12 @@
           <button class="pop-up__btn pop-up__btn_action_deny hover-button" type="button">
           </button>
           <p class="pop-up__title">Редактировать профиль</p>
-          <form class="pop-up__input" name='form' method="GET">
-            <input type="text" class="pop-up__text pop-up__text_type_name" value="Жак-Ив Кусто" name="name">
-            <input type="text" class="pop-up__text pop-up__text_type_profession" value="Исследователь океана" name="proffession">
-            <button class="pop-up__btn pop-up__btn_action_save" type="submit">
+          <form class="pop-up__input pop-up__form" method="GET" novalidate>
+            <input id='name-input' type="text" class="pop-up__input pop-up__text pop-up__text_type_name" value="Жак-Ив Кусто"  required minlength="2" maxlength="40" autocomplete="off">
+            <span id="name-input-error" class=""></span>
+            <input id='profession-input' type="text" class="pop-up__input pop-up__text pop-up__text_type_profession" value="Исследователь океана" required minlength="2" maxlength="200" autocomplete="off">
+            <span id="profession-input-error" class=""></span>
+            <button class="pop-up__btn pop-up__btn_action_save pop-up__btn_type_inactive" type="submit" disabled>
             Сохранить
             </button>
           </form>
@@ -54,10 +55,12 @@
           <button class="pop-up__btn pop-up__btn_action_deny hover-button" type="button">
           </button>
           <p class="pop-up__title">Новое место</p>
-          <form class="pop-up__input" name='form' method="GET">
-            <input type="text" class="pop-up__text pop-up__text_type_place" placeholder="Название" value="" name="name">
-            <input type="text" class="pop-up__text pop-up__text_type_link" placeholder="Ссылка на картинку" name="proffession">
-            <button class="pop-up__btn pop-up__btn_action_save" type="submit">
+          <form class="pop-up__input pop-up__form" method="GET" novalidate>
+            <input id='place' type="text" class="pop-up__text pop-up__text_type_place" placeholder="Название" value="" required minlength="1" maxlength="30">
+            <span id="place-error" class=""></span>
+            <input id='url' type="url" class="pop-up__text pop-up__text_type_link" placeholder="Ссылка на картинку" required>
+            <span id="url-error" class=""></span>
+            <button class="pop-up__btn pop-up__btn_action_save pop-up__btn_type_inactive" type="submit" disabled>
             Создать
             </button>
           </form>
@@ -87,8 +90,7 @@
       </div>
     </div>
   </template>
-
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
-  
 </html>
