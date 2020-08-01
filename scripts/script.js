@@ -177,6 +177,7 @@ document.body.addEventListener('keydown', function(evt) {
   }
 })
 
+
 for (let i = 0; i < overlay.length; i++) {
   overlay[i].addEventListener('click', closeOverlay);
 }
