@@ -159,19 +159,24 @@ initialCards.forEach((data) => {
 
 const overlay = document.querySelectorAll('.pop-up');
 
-function toggleOverlay(evt) {
-  evt.target.classList.toggle('pop-up_type_opened');
-} 
-
-for (let i = 0; i < overlay.length; i++) {
-  overlay[i].addEventListener('click', toggleOverlay);
+function closeOverlay(evt) {
+  if (evt.target.classList.contains('pop-up_type_opened')) {
+    evt.target.classList.remove('pop-up_type_opened')
+  }
 }
 
+document.body.addEventListener('keydown', function(evt) {
+  if (evt.key === 'Escape') {
+    if (overlay[0].classList.contains('pop-up_type_opened')) {
+      overlay[0].classList.remove('pop-up_type_opened')
+    } else if (overlay[1].classList.contains('pop-up_type_opened')) {
+      overlay[1].classList.remove('pop-up_type_opened')
+    } else if (overlay[2].classList.contains('pop-up_type_opened')) {
+      overlay[2].classList.remove('pop-up_type_opened')
+    }
+  }
+})
 
-document.body.addEventListener('keyup', function (evt) {
-  if (evt.key == 'Escape') {
-      document.querySelector('.pop-up_type_opened').classList.remove('pop-up_type_opened');
-      document.querySelector('.pop-up_type_opened').classList.remove('pop-up_type_opened');
-  };
-}, false);
-
+for (let i = 0; i < overlay.length; i++) {
+  overlay[i].addEventListener('click', closeOverlay);
+}

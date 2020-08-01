@@ -1,8 +1,7 @@
 .pop-up__content {
-  max-width: 75vw;
-  max-height: 75vh;
   position: relative;
   margin: auto;
   display: flex;
   justify-content: center;
+  width: fit-content;
 }
