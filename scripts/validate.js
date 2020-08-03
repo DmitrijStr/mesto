@@ -7,6 +7,11 @@ const validationClasses = {
   errorClass: 'pop-up__input_type_error',
 }
 
+function inactiveButtonState (buttonElement) {
+  buttonElement.setAttribute('disabled', true)
+  buttonElement.classList.add(validationClasses.inactiveButtonClass);
+}
+
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(validationClasses.inputErrorClass);
@@ -50,8 +55,7 @@ function hasInvalidInput(inputList) {
 
 function setSubmitButtonState(inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.setAttribute('disabled', true);
-    buttonElement.classList.add(validationClasses.inactiveButtonClass);
+    inactiveButtonState(buttonElement);
   } else {
     buttonElement.removeAttribute('disabled');
     buttonElement.classList.remove(validationClasses.inactiveButtonClass);

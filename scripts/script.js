@@ -60,24 +60,29 @@ const profession = document.querySelector('.profile__profession');
 const elementTemplate = document.querySelector('.card-template').content.querySelector('.photo-grid__item');
 const grid = document.querySelector('.photo-grid');
 
-
 // функции открытия и закрытия модального окна
 
-function openModal(modal) {
-  if (!modal.classList.contains('pop-up_type_opened')) {
-    modal.classList.add('pop-up_type_opened');
-    document.body.addEventListener('keydown', (evt) => {
-      if (evt.key === 'Escape') {
-        closeModal(modal);
-      }
-    });
+function escClose(evt) {
+  if (evt.key === 'Escape') {
+    if (overlay[0].classList.contains('pop-up_type_opened')) {
+      closeModal(overlay[0]);
+    } else if (overlay[1].classList.contains('pop-up_type_opened')) {
+      closeModal(overlay[1]);
+    } else if (overlay[2].classList.contains('pop-up_type_opened')) {
+      closeModal(overlay[2]);
+    }
   }
 }
-// Спасибо больше за ваши комментарии, они очень помогли, постарался исправить все неточности (:
+
+function openModal(modal) {
+  modal.classList.add('pop-up_type_opened');
+  document.body.addEventListener('keydown', escClose);
+}
 
 function closeModal(modal) {
   if (modal.classList.contains('pop-up_type_opened')) {
     modal.classList.remove('pop-up_type_opened');
+    document.body.removeEventListener('keydown', escClose);
   }
 }
 
@@ -103,14 +108,13 @@ function addCardHandler(evt) {
   closeModal(newCardModal);
   placeInput.value = '';
   urlInput.value = '';
-  newCardsaveButton.setAttribute('disabled', true);
-  newCardsaveButton.classList.add(validationClasses.inactiveButtonClass);
+  inactiveButtonState(newCardsaveButton);
 }
 
 //функция лайка карточки
 function likeClick(button) {
   button.classList.toggle('photo-grid__like-button_type_active');
-};
+}
 
 // закрытие по оверлей
 function closeOverlay(evt) {
@@ -118,10 +122,6 @@ function closeOverlay(evt) {
     closeModal(evt.target);
   }
 }
-
-// for (let i = 0; i < overlay.length; i++) {
-//   overlay[i].addEventListener('click', closeOverlay);
-// }
 
 overlay.forEach((everyOverlay) => {
   everyOverlay.addEventListener('click', closeOverlay);
@@ -142,9 +142,11 @@ plusButton.addEventListener('click', () => {
 // слушатели закрытия модальных окон
 editModalCloseBtn.addEventListener('click', () => {
   closeModal(editModal);
+
 });
 newCardModalCloseBtn.addEventListener('click', () => {
   closeModal(newCardModal);
+
 });
 imageModalCloseBtn.addEventListener('click', () => {
   closeModal(imageModal)
@@ -182,17 +184,3 @@ function renderCard(data) {
 initialCards.forEach((data) => {
   renderCard(data);
 });
-
-
-
-// document.body.addEventListener('keydown', function (evt) {
-//   if (evt.key === 'Escape') {
-//     if (overlay[0].classList.contains('pop-up_type_opened')) {
-//       overlay[0].classList.remove('pop-up_type_opened')
-//     } else if (overlay[1].classList.contains('pop-up_type_opened')) {
-//       overlay[1].classList.remove('pop-up_type_opened')
-//     } else if (overlay[2].classList.contains('pop-up_type_opened')) {
-//       overlay[2].classList.remove('pop-up_type_opened')
-//     }
-//   }
-// })
