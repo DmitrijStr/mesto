@@ -63,13 +63,10 @@ const grid = document.querySelector('.photo-grid');
 // функции открытия и закрытия модального окна
 
 function escClose(evt) {
+  const activeModal = document.body.querySelector('.pop-up_type_opened');
   if (evt.key === 'Escape') {
-    if (overlay[0].classList.contains('pop-up_type_opened')) {
-      closeModal(overlay[0]);
-    } else if (overlay[1].classList.contains('pop-up_type_opened')) {
-      closeModal(overlay[1]);
-    } else if (overlay[2].classList.contains('pop-up_type_opened')) {
-      closeModal(overlay[2]);
+    if (activeModal) {
+      closeModal(activeModal);
     }
   }
 }
@@ -80,10 +77,8 @@ function openModal(modal) {
 }
 
 function closeModal(modal) {
-  if (modal.classList.contains('pop-up_type_opened')) {
-    modal.classList.remove('pop-up_type_opened');
-    document.body.removeEventListener('keydown', escClose);
-  }
+  modal.classList.remove('pop-up_type_opened');
+  document.body.removeEventListener('keydown', escClose);
 }
 
 function profieEdit() {
