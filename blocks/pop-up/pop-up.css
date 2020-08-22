@@ -9,7 +9,7 @@
 @import url(./__btn/_action/pop-up__btn_action_save.css);
 @import url(./__btn/_action/pop-up__btn_action_deny.css);
 @import url(./__btn/_type/pop-up__btn_type_inactive.css);
-
+@import url(./__error/popup__error_visible.css);
 @import url(./__image/pop-up__image.css);
 @import url(./__content/pop-up__content.css);
 @import url(./__image-contnaiter/pop-up__image-contnaiter.css);
