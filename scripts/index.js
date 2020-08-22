@@ -1,5 +1,6 @@
 import FormValidator from './FormValidator.js';
 import Card from './Card.js';
+import { imageModal, openModal, closeModal } from './utils.js';
 
 const validationClasses = {
   formSelector: '.pop-up__form',
@@ -61,15 +62,12 @@ function addCardHandler(evt) {
   const item = new Card(placeInput.value, urlInput.value, cardTemplate)
   grid.prepend(item.getCard())
   closeModal(newCardModal);
-  placeInput.value = '';
-  urlInput.value = '';
+  addCard.reset();
   newCardsaveButton.setAttribute('disabled', true);
   newCardsaveButton.classList.add(validationClasses.inactiveButtonClass);
-
 }
 
 // модальные окна
-const imageModal = document.querySelector('.popup_type_image');
 const overlay = document.querySelectorAll('.pop-up');
 
 //кнопки открытия модальных окон
@@ -90,29 +88,6 @@ const urlInput = addCard.querySelector('.pop-up__text_type_link');
 const newCardsaveButton = newCardModal.querySelector('.pop-up__btn_action_save');
 const name = document.querySelector('.profile__name');
 const profession = document.querySelector('.profile__profession');
-
-// функции открытия и закрытия модального окна
-function escClose(evt) {
-  const activeModal = document.body.querySelector('.pop-up_type_opened');
-  if (evt.key === 'Escape') {
-    if (activeModal) {
-      closeModal(activeModal);
-    }
-  }
-}
-
-function openModal(modal) {
-  modal.classList.add('pop-up_type_opened');
-  document.body.addEventListener('keydown', escClose);
-}
-
-function closeModal(modal) {
-  modal.classList.remove('pop-up_type_opened');
-  document.body.removeEventListener('keydown', escClose);
-  if (!modal.classList.contains('popup_type_image')) {
-    // resetForm(modal)
-  }
-}
 
 function profieEdit() {
   nameInput.value = name.textContent;
@@ -146,8 +121,7 @@ editButton.addEventListener('click', profieEdit);
 
 plusButton.addEventListener('click', () => {
   openModal(newCardModal)
-  placeInput.value = '';
-  urlInput.value = '';
+  addCard.reset();
 });
 
 // слушатели закрытия модальных окон
