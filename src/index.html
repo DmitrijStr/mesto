@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="./pages/index.css">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project Mesto</title>
 </head>
@@ -41,10 +41,10 @@
         </button>
         <p class="pop-up__title">Редактировать профиль</p>
         <form class="pop-up__input pop-up__form" method="GET" novalidate>
-          <input id='name-input' type="text" class="pop-up__input pop-up__text pop-up__text_type_name"
+          <input id='name-input' type="text" class="pop-up__input pop-up__text " name="name"
             value="Жак-Ив Кусто" required minlength="2" maxlength="40" autocomplete="off">
           <span id="name-input-error" class=""></span>
-          <input id='profession-input' type="text" class="pop-up__input pop-up__text pop-up__text_type_profession"
+          <input id='profession-input' type="text" class="pop-up__input pop-up__text " name="profession"
             value="Исследователь океана" required minlength="2" maxlength="200" autocomplete="off">
           <span id="profession-input-error" class=""></span>
           <button class="pop-up__btn pop-up__btn_action_save pop-up__btn_type_inactive" type="submit" disabled>
@@ -59,10 +59,10 @@
         </button>
         <p class="pop-up__title">Новое место</p>
         <form class="pop-up__input pop-up__form" method="GET" novalidate>
-          <input id='place' type="text" class="pop-up__text pop-up__text_type_place" placeholder="Название" value=""
+          <input id='place' type="text" class="pop-up__text pop-up__text_type_place" placeholder="Название" value="" name="name"
             required minlength="1" maxlength="30">
           <span id="place-error" class=""></span>
-          <input id='url' type="url" class="pop-up__text pop-up__text_type_link" placeholder="Ссылка на картинку"
+          <input id='url' type="url" class="pop-up__text pop-up__text_type_link" placeholder="Ссылка на картинку" name='link'
             required>
           <span id="url-error" class=""></span>
           <button class="pop-up__btn pop-up__btn_action_save pop-up__btn_type_inactive" type="submit" disabled>
@@ -76,7 +76,7 @@
         <div class="pop-up__image-contnaiter">
           <button class="pop-up__btn pop-up__btn_action_deny hover-button" type="button">
           </button>
-          <img class="pop-up__image" src="" alt='изображение'>
+          <img class="pop-up__image" src="#" alt='изображение'>
           <p class='pop-up__image-name'></p>
         </div>
       </div>
@@ -86,16 +86,15 @@
     <div class="photo-grid__item">
       <button class="photo-grid__trash-button hover-button" type="button">
       </button>
-      <button class="photo-grid__image-button hover-button" type="button">
-        <img class="photo-grid__image" src="" alt='изображение'>
-      </button>
+      <!-- <button class="photo-grid__image-button hover-button" type="button"> -->
+        <img class="photo-grid__image photo-grid__image-button hover-button" src="#" alt='изображение' type='button'>
+      <!-- </button> -->
       <div class="photo-grid__description">
         <h2 class=photo-grid__place></h2>
         <button class="photo-grid__like-button hover-button" type="button"></button>
       </div>
     </div>
   </template>
-  <script src="./scripts/index.js" type="module"></script>
 </body>
 
 </html>

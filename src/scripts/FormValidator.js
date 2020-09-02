@@ -27,7 +27,7 @@ class FormValidator {
 
     }
 
-    _removeInactiveButtonState = (buttonElement) => {
+    _removeInactiveButtonState(buttonElement) {
         this._buttonElement = buttonElement;
         this._buttonElement.removeAttribute('disabled');
         this._buttonElement.classList.remove(this._config.inactiveButtonClass);
@@ -43,7 +43,7 @@ class FormValidator {
         }
     }
 
-    _setSubmitButtonState = (inputList, buttonElement) => {
+    _setSubmitButtonState(inputList, buttonElement) {
         this._inputList = inputList;
         this.buttonElement = buttonElement;
         if (this._hasInvalidInput(this._inputList)) {
