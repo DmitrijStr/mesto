@@ -3,4 +3,5 @@
   width: 100%;
   min-height: 283px;
   max-height: 283px;
+  object-fit: cover;
 }

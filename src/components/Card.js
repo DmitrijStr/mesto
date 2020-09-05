@@ -1,8 +1,5 @@
-import Popup from './Popup.js';
-
-class Card extends Popup {
+class Card {
   constructor({ data, handleCardClick }, thisTemplate) {
-    super()
     this._name = data.name;
     this._link = data.link;
     this._thisTemplate = thisTemplate;
@@ -18,12 +15,20 @@ class Card extends Popup {
     evt.target.classList.toggle('photo-grid__like-button_type_active');
   }
 
+  _getTemplate() {
+    const cardElement = this._thisTemplate
+      .content.children[0]
+      .cloneNode(true);
+    return cardElement;
+  }
+
+
   getCard() {
-    const elementTemplate = this._thisTemplate.content.children[0];
-    this._element = elementTemplate.cloneNode(true);
+    this._element = this._getTemplate()
+    const image = this._element.querySelector('.photo-grid__image');
     this._element.querySelector('.photo-grid__place').textContent = this._name;
-    this._element.querySelector('.photo-grid__image').src = this._link;
-    this._element.querySelector('.photo-grid__image').alt = `изображение ${this._name}`;
+    image.src = this._link;
+    image.alt = `изображение ${this._name}`;
     this._element.querySelector('.photo-grid__like-button').addEventListener('click', (evt) => {
       this._like(evt)
     });
@@ -32,10 +37,6 @@ class Card extends Popup {
     });
     this._element.querySelector('.photo-grid__image-button').addEventListener('click', this.handleCardClick)
     return this._element;
-  }
-
-  open() {
-    super.open()
   }
 }
 

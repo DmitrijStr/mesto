@@ -1,21 +1,20 @@
-import { popupCloseButton, ESC_KEYCODE } from './utils.js';
+import { ESC_KEYCODE } from '../utils/utils.js';
 
 export default class Popup {
-	constructor(popupSelector) {
+	constructor(popupSelector, closeBtn) {
 		this.popupSelector = document.querySelector(popupSelector);
+		this.closeBtn = this.popupSelector.querySelector(closeBtn);
+		this._handleEsc = this._handleEsc.bind(this);
 	}
+
 	open() {
 		this.popupSelector.classList.add('pop-up_type_opened');
-		document.body.addEventListener('keydown', (evt) => {
-			this._handleEsc(evt);
-		});
+		document.body.addEventListener('keydown', this._handleEsc)
 	}
 
 	close() {
 		this.popupSelector.classList.remove('pop-up_type_opened');
-		document.body.removeEventListener('keydown', (evt) => {
-			this._handleEsc(evt);
-		});
+		document.body.removeEventListener('keydown', this._handleEsc)
 	}
 
 	_handleEsc(evt) {
@@ -26,11 +25,10 @@ export default class Popup {
 	}
 
 	setEventListeners() {
-		popupCloseButton.forEach((button) => {
-			button.addEventListener('click', () => {
-				this.close()
-			})
+		this.closeBtn.addEventListener('click', () => {
+			this.close();
 		})
+
 		this.popupSelector.addEventListener('click', this._closeOverlay)
 	}
 
