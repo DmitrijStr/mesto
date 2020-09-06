@@ -4,6 +4,7 @@ import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+import { imageModalImage, imageModalPlace } from '../utils/utils.js';
 
 import '../pages/index.css';
 
@@ -110,7 +111,10 @@ addCardForm.setEventListeners();
 const imagePopup = new PopupWithImage({
   popupSelector: ('.popup_type_image'),
   closeBtn: ('.pop-up__btn_action_deny')
-});
+},
+  imageModalImage,
+  imageModalPlace,
+);
 imagePopup.setEventListeners();
 
 // рендер начальных карточек

@@ -1,16 +1,17 @@
 import Popup from "./Popup.js";
-import { imageModalImage, imageModalPlace } from '../utils/utils.js';
 
 export default class PopupWithImage extends Popup {
-	constructor({ popupSelector, closeBtn }) {
+	constructor({ popupSelector, closeBtn }, popupImage, popupPlace) {
 		super(popupSelector, closeBtn)
+		this._popupImage = popupImage;
+		this._popupPlace = popupPlace;
 	}
 
 	open(data) {
 		this._data = data;
-		imageModalImage.src = this._data.link;
-		imageModalPlace.textContent = this._data.name;
-		imageModalImage.alt = `изображение ${this._data.name}`;
+		this._popupImage.src = this._data.link;
+		this._popupPlace.textContent = this._data.name;
+		this._popupImage.alt = `изображение ${this._data.name}`;
 		super.open()
 	}
 
