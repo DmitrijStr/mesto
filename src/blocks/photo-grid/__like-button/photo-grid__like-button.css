@@ -1,9 +1,8 @@
 .photo-grid__like-button {
   background-color: #FFF;
   border: none;
-  padding-right: 22.24px;
   height: 18.16px;
-  width: 20px;
+  width: 21px;
   cursor: pointer;
   background-image: url(../../../images/like.svg);
   background-repeat: no-repeat;

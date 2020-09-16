@@ -98,6 +98,11 @@ class FormValidator {
         const buttonElement = this._formElement.querySelector(this._config.submitButtonSelector);
         this._addInactiveButtonState(buttonElement);
     }
+
+   enableButton() {
+        const buttonElement = this._formElement.querySelector(this._config.submitButtonSelector);
+        this._removeInactiveButtonState(buttonElement);
+    }
 }
 
 export default FormValidator;

@@ -16,13 +16,14 @@
     <main class="content">
       <section class="profile">
         <div class="profile__infos">
-          <img class="profile__avatar" src="./images/avatar.jpg" alt="изображение аватара">
+          <figure class="profile__avatar-wrapper"> <img class="profile__avatar" src="#" alt="изображение аватара">
+          </figure>
           <div class="profile__description">
             <div class='profile__info'>
-              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <h1 class="profile__name">#</h1>
               <button class="profile__button profile__button_action_edit hover-button" type="button"></button>
             </div>
-            <p class="profile__profession">Исследователь океана</p>
+            <p class="profile__profession">#</p>
           </div>
         </div>
         <button class="profile__button profile__button_action_add hover-button" type="button">
@@ -41,11 +42,11 @@
         </button>
         <p class="pop-up__title">Редактировать профиль</p>
         <form class="pop-up__input pop-up__form" method="GET" novalidate>
-          <input id='name-input' type="text" class="pop-up__input pop-up__text " name="name"
-            value="Жак-Ив Кусто" required minlength="2" maxlength="40" autocomplete="off">
+          <input id='name-input' type="text" class="pop-up__input pop-up__text" name="name" value="" required
+            minlength="2" maxlength="40" autocomplete="off">
           <span id="name-input-error" class=""></span>
-          <input id='profession-input' type="text" class="pop-up__input pop-up__text " name="profession"
-            value="Исследователь океана" required minlength="2" maxlength="200" autocomplete="off">
+          <input id='profession-input' type="text" class="pop-up__input pop-up__text " name="about"
+            value="" required minlength="2" maxlength="200" autocomplete="off">
           <span id="profession-input-error" class=""></span>
           <button class="pop-up__btn pop-up__btn_action_save pop-up__btn_type_inactive" type="submit" disabled>
             Сохранить
@@ -59,11 +60,11 @@
         </button>
         <p class="pop-up__title">Новое место</p>
         <form class="pop-up__input pop-up__form" method="GET" novalidate>
-          <input id='place' type="text" class="pop-up__text pop-up__text_type_place" placeholder="Название" value="" name="name"
-            required minlength="1" maxlength="30">
+          <input id='place' type="text" class="pop-up__text pop-up__text_type_place" placeholder="Название" value=""
+            name="name" required minlength="1" maxlength="30">
           <span id="place-error" class=""></span>
-          <input id='url' type="url" class="pop-up__text pop-up__text_type_link" placeholder="Ссылка на картинку" name='link'
-            required>
+          <input id='url' type="url" class="pop-up__text pop-up__text_type_link" placeholder="Ссылка на картинку"
+            name='link' required>
           <span id="url-error" class=""></span>
           <button class="pop-up__btn pop-up__btn_action_save pop-up__btn_type_inactive" type="submit" disabled>
             Создать
@@ -81,17 +82,61 @@
         </div>
       </div>
     </section>
+
+    <section class="pop-up popup_type_delete-card">
+      <div class="pop-up__container">
+        <button class="pop-up__btn pop-up__btn_action_deny hover-button" type="button">
+        </button>
+        <p class="pop-up__title">Вы уверены?</p>
+        <button class="pop-up__btn pop-up__btn_action_save" type="submit">
+          Да
+        </button>
+        </form>
+      </div>
+    </section>
+
+    <section class="pop-up popup_type_edit-avatar">
+      <div class="pop-up__container">
+        <button class="pop-up__btn pop-up__btn_action_deny hover-button" type="button">
+        </button>
+        <p class="pop-up__title">Обновить аватар</p>
+        <form class="pop-up__input pop-up__form" method="GET" novalidate>
+          <input id='place' type="url" class="pop-up__text pop-up__text_type_place" placeholder="ссылка" value=""
+            name="avatar" required>
+          <span id="place-error" class=""></span>
+          <button class="pop-up__btn pop-up__btn_action_save pop-up__btn_type_inactive" type="submit" disabled>
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </section>
   </div>
   <template class="card-template">
     <div class="photo-grid__item">
-      <button class="photo-grid__trash-button hover-button" type="button">
-      </button>
-      <!-- <button class="photo-grid__image-button hover-button" type="button"> -->
-        <img class="photo-grid__image photo-grid__image-button hover-button" src="#" alt='изображение' type='button'>
-      <!-- </button> -->
+      <img class="photo-grid__image photo-grid__image-button hover-button" src="#" alt='изображение' type='button'>
       <div class="photo-grid__description">
         <h2 class=photo-grid__place></h2>
-        <button class="photo-grid__like-button hover-button" type="button"></button>
+        <div class="photo-grid__like-wrapper">
+          <button class="photo-grid__like-button hover-button" type="button"></button>
+          <p class="photo-grid__likes-count">#</p>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template class="card-template_user">
+    <div class="photo-grid__item">
+      <button class="photo-grid__trash-button hover-button" type="button">
+      </button>
+
+      <img class="photo-grid__image photo-grid__image-button hover-button" src="#" alt='изображение' type='button'>
+
+      <div class="photo-grid__description">
+        <h2 class=photo-grid__place></h2>
+        <div class="photo-grid__like-wrapper">
+          <button class="photo-grid__like-button hover-button" type="button"></button>
+          <p class="photo-grid__likes-count">0</p>
+        </div>
       </div>
     </div>
   </template>

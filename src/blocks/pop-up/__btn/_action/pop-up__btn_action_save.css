@@ -8,8 +8,10 @@
   padding: 0;
   border: none;
   color: #FFFFFF;
-  margin-top: 48px;
-  margin-bottom: 36.52px;
+  margin: 48px auto 36.52px;
+  /* margin-top: 48px;
+  margin-bottom: 36.52px; */
+  max-width: 358px;
 }
 
 .pop-up__btn_action_save:hover {
