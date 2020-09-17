@@ -37,4 +37,15 @@ export default class Popup {
 			evt.target.classList.remove('pop-up_type_opened');
 		}
 	}
+
+	renderLoading(isLoading) {
+		const saveButton = this.popupSelector.querySelector('.pop-up__btn_action_save')
+		if (isLoading) {
+			saveButton.textContent = 'Сохранение...';
+		} else {
+			saveButton.textContent = 'Сохранить';
+		}
+	}
 }
+
+

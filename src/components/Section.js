@@ -15,4 +15,14 @@ export default class Section {
 			this._renderer(item);
 		});
 	}
+	
+	setItem(element, isArray) { 
+    if (isArray) { 
+      this._containerSelector.append(element); 
+		} 
+		else { 
+      this._containerSelector.prepend(element); 
+    } 
+  }
+
 }

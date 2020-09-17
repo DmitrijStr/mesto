@@ -3,7 +3,7 @@ import Card from '../components/Card.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
-import PopupWithSubmit from'../components/PopupWithSubmit.js';
+import PopupWithSubmit from '../components/PopupWithSubmit.js';
 
 
 
@@ -79,20 +79,53 @@ api.getUserInfo()
       about: data.about,
     })
     user.id = data._id;
-    user.setAvatar(data.avatar)
+    user.setAvatar(data.avatar);
   })
   .catch((err) => {
     console.log(err);
-  })
+  });
+
+// Попап редактирования аватара
+const patchAvatarForm = new PopupWithForm({
+  popupSelector: ('.popup_type_edit-avatar'),
+  closeBtn: ('.pop-up__btn_action_deny'),
+  formSubmitHandler: (formData) => {
+    patchAvatarForm.renderLoading(true);
+    api.patchAvatar({
+      avatar: formData.avatar
+    })
+      .then((info) => {
+        user.setAvatar(info.avatar)
+        patchAvatarForm.close();
+      })
+      .catch(err => console.log(err))
+      .finally(() => {
+        patchAvatarForm.renderLoading(false);
+      })
+  }
+});
+avatarButton.addEventListener('click', () => {
+  patchAvatarValidation.clearAllErrors();
+  patchAvatarValidation.enableButton();
+  patchAvatarForm.open();
+})
+patchAvatarForm.setEventListeners();
 
 // Попап редактирования профиля
 const editpopupForm = new PopupWithForm({
   popupSelector: ('.popup_type_edit'),
   closeBtn: ('.pop-up__btn_action_deny'),
   formSubmitHandler: (formData) => {
-    user.setUserInfo(formData);
-    api.patchUserInfo(formData);
-    editpopupForm.close()
+    editpopupForm.renderLoading(true);
+    api.patchUserInfo(formData)
+      .then(() => {
+        user.setUserInfo(formData);
+        editpopupForm.close();
+      })
+      .catch(err => console.log(err))
+      .finally(() => {
+        editpopupForm.renderLoading(false);
+      })
   }
 });
 editButton.addEventListener('click', () => {
@@ -101,6 +134,7 @@ editButton.addEventListener('click', () => {
       nameInput.value = data.name
       jobInput.value = data.about
     })
+    .catch(err => console.log(err));
   editFormValidation.clearAllErrors()
   editFormValidation.enableButton()
   editpopupForm.open();
@@ -112,9 +146,16 @@ const addCardForm = new PopupWithForm({
   popupSelector: ('.popup_type_new-card'),
   closeBtn: ('.pop-up__btn_action_deny'),
   formSubmitHandler: (formData) => {
+    addCardForm.renderLoading(true);
     api.postCard(formData)
-    getsCard(formData, userCardTemplate, user);
-    addCardForm.close();
+      .then(() => {
+        getsCard(formData, userCardTemplate, user);
+        addCardForm.close();
+      })
+      .catch(err => console.log(err))
+      .finally(() => {
+        addCardForm.renderLoading(false);
+      })
   }
 })
 plusButton.addEventListener('click', () => {
@@ -125,24 +166,7 @@ plusButton.addEventListener('click', () => {
 });
 addCardForm.setEventListeners();
 
-// Попап редактирования аватара
-const patchAvatarForm = new PopupWithForm({
-  popupSelector: ('.popup_type_edit-avatar'),
-  closeBtn: ('.pop-up__btn_action_deny'),
-  formSubmitHandler: (formData) => {
-    api.patchAvatar(formData)
-    patchAvatarForm.close();
-  }
-});
-avatarButton.addEventListener('click', () => {
-  patchAvatarValidation.clearAllErrors();
-  patchAvatarValidation.enableButton();
-  patchAvatarForm.open();
-})
-patchAvatarForm.setEventListeners();
-
 // попап открытия изображения
-
 const imagePopup = new PopupWithImage({
   popupSelector: ('.popup_type_image'),
   closeBtn: ('.pop-up__btn_action_deny')
@@ -153,7 +177,6 @@ const imagePopup = new PopupWithImage({
 imagePopup.setEventListeners();
 
 //Попап подтверждения удаления
-
 const deleteCardSubmit = new PopupWithSubmit({
   popupSelector: ('.popup_type_delete-card'),
   closeBtn: ('.pop-up__btn_action_deny')
@@ -171,59 +194,70 @@ const cardList = new Section({
   cardContainer
 );
 
-api.getInitialCards()
-  .then((result) => {
+Promise.all([
+  api.getUserInfo(),
+  api.getInitialCards()
+])
+  .then((values) => {    //попадаем сюда когда оба промиса будут выполнены
+    const [userData, initialCards] = values;
     const cardList = new Section({
-      items: result,
+      items: initialCards,
       renderer: (data) => {
-        if (data.owner._id === user.id) {
-          getsCard(data, userCardTemplate, user)
-        } else if (data.owner._id !== user.id) {
-          getsCard(data, cardTemplate)
+        if (data.owner._id === userData._id) {
+          getsCard(data, userCardTemplate, true, userData._id)
+        } else if (data.owner._id !== user._id) {
+          getsCard(data, cardTemplate, false, userData._id)
         }
       }
     },
       cardContainer
     );
     cardList.renderItems();
-    return result
+  })
+  .catch((err) => {
+    console.log(err);
   })
 
-function getsCard(data, template, user) {
+function getsCard(data, template, owner, user) {
   const card = new Card({
     data,
-
     handleCardClick: () => {
       imagePopup.open(data);
     },
-
     handleDeleteCard: (id) => {
       deleteCardSubmit.setSubmitAction(_ => {
         api.deleteCard(id)
-        card.remove()
-        deleteCardSubmit.close()
+          .then(() => {
+            card.remove()
+            deleteCardSubmit.close()
+          })
+          .catch(err => console.log(err))
       })
       deleteCardSubmit.open()
     },
-
     handleLikeClick: (id) => {
-      api.putLike(id).then(res => {
-        card.updateLikeCount(res)
-      })
+      api.putLike(id)
+        .then(res => {
+          card.updateLikeCount(res)
+        })
+        .catch(err => console.log(err))
     },
     handleDislikeLikeClick: (id) => {
-      api.removeLike(id).then(res => {
-        card.updateLikeCount(res)
-      })
+      api.removeLike(id)
+        .then(res => {
+          card.updateLikeCount(res)
+        })
+        .catch(err => console.log(err))
     },
-
-    api,
+    currentUser: user
   }, template)
-  if (user) {
-    const userCard = card.getCard(user);
-    cardList.setItem(userCard);
+  if (owner) {
+    const userCard = card.getCard(owner);
+    cardList.setItem(userCard, false);
   } else {
     const cardElement = card.getCard();
-    cardList.setItem(cardElement);
+    cardList.setItem(cardElement, true);
   }
 }
+
+// Большое спасибо за подробные комментарии, непонятные моменты прояснились :)
