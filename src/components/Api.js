@@ -13,9 +13,6 @@ export default class Api {
 				.then((result) => {
 					return result
 				})
-				.catch((err) => {
-					console.log(err);
-				});
 		}
 	}
 

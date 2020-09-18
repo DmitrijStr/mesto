@@ -71,20 +71,6 @@ const user = new UserInfo({
   avatar: avatar
 });
 
-// инициализация юзера
-api.getUserInfo()
-  .then((data) => {
-    user.setUserInfo({
-      name: data.name,
-      about: data.about,
-    })
-    user.id = data._id;
-    user.setAvatar(data.avatar);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
 // Попап редактирования аватара
 const patchAvatarForm = new PopupWithForm({
   popupSelector: ('.popup_type_edit-avatar'),
@@ -198,8 +184,15 @@ Promise.all([
   api.getUserInfo(),
   api.getInitialCards()
 ])
-  .then((values) => {    //попадаем сюда когда оба промиса будут выполнены
+  .then((values) => {
     const [userData, initialCards] = values;
+    // инициализация юзера
+    user.setUserInfo({
+      name: userData.name,
+      about: userData.about,
+    })
+    user.id = userData._id;
+    user.setAvatar(userData.avatar);
     const cardList = new Section({
       items: initialCards,
       renderer: (data) => {
@@ -259,5 +252,3 @@ function getsCard(data, template, owner, user) {
     cardList.setItem(cardElement, true);
   }
 }
-
-// Большое спасибо за подробные комментарии, непонятные моменты прояснились :)
